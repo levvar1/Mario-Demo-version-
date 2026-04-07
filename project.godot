@@ -1,0 +1,37 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="Марио"
+run/main_scene="uid://cyx0mnumh4hnd"
+config/features=PackedStringArray("4.6", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+SceneData="*res://scripts/scene_data.gd"
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="ground"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="koopa"
+2d_physics/layer_5="obstacle"
+2d_physics/layer_6="bonus"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

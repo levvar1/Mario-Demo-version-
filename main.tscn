@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://cyx0mnumh4hnd"]
+
+[ext_resource type="PackedScene" uid="uid://csk8kc5yg3vj1" path="res://scene/tile_map.tscn" id="1_272bh"]
+[ext_resource type="PackedScene" uid="uid://cfw8dx6clo7ja" path="res://scene/ui.tscn" id="8_5vw27"]
+[ext_resource type="PackedScene" uid="uid://dgpumbt2i278m" path="res://scene/player.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://c4o4vsbdvr3dp" path="res://scene/goomba.tscn" id="10_4c57u"]
+[ext_resource type="PackedScene" uid="uid://bh63tb53fujmc" path="res://scene/brick.tscn" id="11_efxa6"]
+[ext_resource type="PackedScene" uid="uid://dnrmiw8nq26jd" path="res://scene/mystory_box.tscn" id="12_dg77c"]
+[ext_resource type="Script" uid="uid://ccten1gjpqcce" path="res://scripts/level_manager.gd" id="13_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://dud62qka4rf5o" path="res://scene/pipi.tscn" id="14_w48qg"]
+
+[sub_resource type="GDScript" id="GDScript_ycdy4"]
+
+[node name="Main" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_272bh")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, 1)
+zoom = Vector2(2.75, 2.75)
+limit_smoothed = true
+rotation_smoothing_enabled = true
+script = SubResource("GDScript_ycdy4")
+
+[node name="player" parent="." node_paths=PackedStringArray("camera_sync") instance=ExtResource("9_kek77")]
+position = Vector2(-148, 53)
+camera_sync = NodePath("../Camera2D")
+
+[node name="enemies" type="Node" parent="."]
+
+[node name="goomba" parent="enemies" instance=ExtResource("10_4c57u")]
+position = Vector2(-84, -8)
+collision_mask = 9
+y_speed = 25
+
+[node name="brick" parent="." instance=ExtResource("11_efxa6")]
+position = Vector2(-93, 14)
+
+[node name="Mystorybox" parent="." instance=ExtResource("12_dg77c")]
+position = Vector2(-54, 9)
+
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("ui", "player") groups=["level_manager"]]
+script = ExtResource("13_ycdy4")
+ui = NodePath("../UI")
+player = NodePath("../player")
+
+[node name="pipi" parent="." instance=ExtResource("14_w48qg")]
+position = Vector2(125, 9)
+height = 64
+is_traversable = true
+
+[node name="pipi2" parent="." instance=ExtResource("14_w48qg")]
+position = Vector2(205, 41)
+
+[node name="pipi3" parent="." instance=ExtResource("14_w48qg")]
+position = Vector2(-145, 73)
+
+[node name="UI" parent="." instance=ExtResource("8_5vw27")]
