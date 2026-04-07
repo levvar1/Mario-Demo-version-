@@ -1,0 +1,88 @@
+[gd_scene load_steps=11 format=3 uid="uid://bwdpj718tootk"]
+
+[ext_resource type="PackedScene" uid="uid://csk8kc5yg3vj1" path="res://scene/tile_map.tscn" id="1_rfktq"]
+[ext_resource type="Script" uid="uid://ccten1gjpqcce" path="res://scripts/level_manager.gd" id="1_xoyoh"]
+[ext_resource type="PackedScene" uid="uid://bh63tb53fujmc" path="res://scene/brick.tscn" id="2_0urlm"]
+[ext_resource type="PackedScene" uid="uid://dnrmiw8nq26jd" path="res://scene/mystory_box.tscn" id="3_77x7w"]
+[ext_resource type="PackedScene" uid="uid://dud62qka4rf5o" path="res://scene/pipi.tscn" id="4_xoyoh"]
+[ext_resource type="PackedScene" uid="uid://c4o4vsbdvr3dp" path="res://scene/goomba.tscn" id="5_f4pg2"]
+[ext_resource type="PackedScene" uid="uid://dgpumbt2i278m" path="res://scene/player.tscn" id="6_62b6n"]
+[ext_resource type="PackedScene" uid="uid://cfw8dx6clo7ja" path="res://scene/ui.tscn" id="7_77x7w"]
+[ext_resource type="PackedScene" uid="uid://djaaprbyyw8tt" path="res://scene/coinunder.tscn" id="9_xoyoh"]
+
+[sub_resource type="GDScript" id="GDScript_rfktq"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("ui", "player") groups=["level_manager"]]
+script = ExtResource("1_xoyoh")
+ui = NodePath("../UI")
+player = NodePath("../player")
+
+[node name="TileMap" parent="." instance=ExtResource("1_rfktq")]
+layer_0/tile_data = PackedInt32Array(65532, 65539, 0, 131068, 65539, 1, 196604, 65539, 2, 65533, 65539, 0, 131069, 65539, 1, 196605, 65539, 2, 65534, 65539, 0, 131070, 65539, 1, 196606, 65539, 2, 65535, 65539, 0, 131071, 65539, 1, 196607, 65539, 2, 0, 65539, 0, 65536, 65539, 1, 131072, 65539, 2, 1, 65539, 0, 65537, 65539, 1, 131073, 65539, 2, 2, 65539, 0, 65538, 65539, 1, 131074, 65539, 2, 3, 65539, 0, 65539, 65539, 1, 131075, 65539, 2, 4, 65539, 0, 65540, 65539, 1, 131076, 65539, 2, 5, 65539, 0, 65541, 65539, 1, 131077, 65539, 2, 6, 65539, 0, 65542, 65539, 1, 131078, 65539, 2, 7, 65539, 0, 65543, 65539, 1, 131079, 65539, 2, 8, 65539, 0, 65544, 65539, 1, 131080, 65539, 2, 9, 65539, 0, 65545, 65539, 1, 131081, 65539, 2, 10, 65539, 0, 65546, 65539, 1, 131082, 65539, 2, 11, 65539, 0, 65547, 65539, 1, 131083, 65539, 2, 12, 65539, 0, 65548, 65539, 1, 131084, 65539, 2, 13, 65539, 0, 65549, 65539, 1, 131085, 65539, 2, 14, 65539, 0, 65550, 65539, 1, 131086, 65539, 2, 15, 65539, 0, 65551, 65539, 1, 131087, 65539, 2, 16, 65539, 0, 65552, 65539, 1, 131088, 65539, 2, 17, 65539, 0, 65553, 65539, 1, 131089, 65539, 2, 18, 65539, 0, 65554, 65539, 1, 131090, 65539, 2, 19, 65539, 0, 65555, 65539, 1, 131091, 65539, 2, 20, 65539, 0, 65556, 65539, 1, 131092, 65539, 2, 21, 65539, 0, 65557, 65539, 1, 131093, 65539, 2, 22, 65539, 0, 65558, 65539, 1, 131094, 65539, 2, 23, 65539, 0, 65559, 65539, 1, 131095, 65539, 2, 24, 65539, 0, 65560, 65539, 1, 131096, 65539, 2, 25, 65539, 0, 65561, 65539, 1, 131097, 65539, 2, 26, 65539, 0, 65562, 65539, 1, 131098, 65539, 2, 27, 65539, 0, 65563, 65539, 1, 131099, 65539, 2, 28, 65539, 0, 65564, 65539, 1, 131100, 65539, 2)
+
+[node name="UI" parent="." instance=ExtResource("7_77x7w")]
+
+[node name="player" parent="." node_paths=PackedStringArray("camera_sync") instance=ExtResource("6_62b6n")]
+position = Vector2(-35, -11)
+camera_sync = NodePath("../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(315, -169)
+zoom = Vector2(1.5, 1.5)
+limit_smoothed = true
+rotation_smoothing_enabled = true
+script = SubResource("GDScript_rfktq")
+
+[node name="Block" type="Node" parent="."]
+
+[node name="brick" parent="Block" instance=ExtResource("2_0urlm")]
+position = Vector2(20, -50)
+
+[node name="brick2" parent="Block" instance=ExtResource("2_0urlm")]
+position = Vector2(60, -50)
+
+[node name="pipi" parent="Block" instance=ExtResource("4_xoyoh")]
+position = Vector2(177, -23)
+
+[node name="brick3" parent="Block" instance=ExtResource("2_0urlm")]
+position = Vector2(295, -13)
+
+[node name="brick4" parent="Block" instance=ExtResource("2_0urlm")]
+position = Vector2(335, -13)
+
+[node name="brick5" parent="Block" instance=ExtResource("2_0urlm")]
+position = Vector2(146, -176)
+
+[node name="MystoyBox" type="Node" parent="."]
+
+[node name="Mystorybox" parent="MystoyBox" instance=ExtResource("3_77x7w")]
+position = Vector2(61, -125)
+bonus_type = 1
+
+[node name="Enemy" type="Node" parent="."]
+
+[node name="goomba" parent="Enemy" instance=ExtResource("5_f4pg2")]
+position = Vector2(60, -73)
+x_speed = 0
+y_speed = 0
+
+[node name="goomba2" parent="Enemy" instance=ExtResource("5_f4pg2")]
+position = Vector2(145, -198)
+x_speed = 0
+y_speed = 0
+
+[node name="goomba3" parent="Enemy" instance=ExtResource("5_f4pg2")]
+position = Vector2(422, -7)
+
+[node name="coin" type="Node" parent="."]
+
+[node name="collectebaleCoin" parent="coin" instance=ExtResource("9_xoyoh")]
+position = Vector2(13, -74)
+
+[node name="collectebaleCoin2" parent="coin" instance=ExtResource("9_xoyoh")]
+position = Vector2(161, -202)
+
+[node name="collectebaleCoin3" parent="coin" instance=ExtResource("9_xoyoh")]
+position = Vector2(176, -42)
