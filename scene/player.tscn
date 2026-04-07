@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgpumbt2i278m"]
+
+[ext_resource type="Script" uid="uid://dfq5td8l8lfbj" path="res://scripts/player.gd" id="1_fvtld"]
+[ext_resource type="Texture2D" uid="uid://nsbvqxlsokhj" path="res://icon/goomba_super_mario_bros_icon_232943.png" id="2_ct4mp"]
+[ext_resource type="Texture2D" uid="uid://wtn7uohcoa7u" path="res://icon/death.png" id="2_s4jxa"]
+[ext_resource type="Shape2D" uid="uid://dc7ranx8w7alu" path="res://resorses/colision/small mashrrow.tres" id="3_s4jxa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oh5ij"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s4jxa")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ct4mp")
+}],
+"loop": true,
+"name": &"small",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ct4mp")
+}],
+"loop": true,
+"name": &"small to big",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_ct4mp"]
+script/source = "extends Node
+
+var return_point: Vector2
+var player_mode: Player.PlayerMode
+var points: int
+var coin: int
+	
+"
+
+[node name="player" type="CharacterBody2D"]
+position = Vector2(17, 6)
+collision_mask = 22
+script = ExtResource("1_fvtld")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visibility_layer = 6
+position = Vector2(3.8147e-06, 1.90735e-06)
+scale = Vector2(0.0791017, 0.0773631)
+sprite_frames = SubResource("SpriteFrames_oh5ij")
+animation = &"small"
+script = SubResource("GDScript_ct4mp")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 60
+
+[node name="Areacolision" type="CollisionShape2D" parent="Area2D"]
+visibility_layer = 6
+position = Vector2(0.375, 1.5)
+shape = ExtResource("3_s4jxa")
+
+[node name="bodycollision" type="CollisionShape2D" parent="."]
+visibility_layer = 6
+position = Vector2(1, 2)
+shape = ExtResource("3_s4jxa")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

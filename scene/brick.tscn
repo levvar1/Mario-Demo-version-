@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh63tb53fujmc"]
+
+[ext_resource type="Script" uid="uid://cr552jriw7y2" path="res://scripts/brick.gd" id="1_18ifo"]
+[ext_resource type="Texture2D" uid="uid://cgt46qagyrqn7" path="res://icon/icons8-кирпич-48.png" id="2_oigqh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4s14"]
+size = Vector2(40, 28)
+
+[node name="brick" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 13
+script = ExtResource("1_18ifo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_oigqh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v4s14")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -20)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false

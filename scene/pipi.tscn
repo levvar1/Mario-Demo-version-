@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dud62qka4rf5o"]
+
+[ext_resource type="Texture2D" uid="uid://ciotiusu6d7vm" path="res://icon/PipeTop.png" id="1_ismqy"]
+[ext_resource type="Script" uid="uid://bp3y53qk44oot" path="res://scripts/pipi.gd" id="1_odvh8"]
+[ext_resource type="Texture2D" uid="uid://cf6w5xwxth3mi" path="res://icon/PipeBottom.png" id="2_odvh8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pgta"]
+size = Vector2(32, 32)
+
+[node name="pipi" type="StaticBody2D"]
+texture_repeat = 2
+collision_layer = 16
+collision_mask = 5
+script = ExtResource("1_odvh8")
+
+[node name="pipiTop" type="Sprite2D" parent="."]
+texture = ExtResource("1_ismqy")
+
+[node name="pipiBody" type="Sprite2D" parent="."]
+position = Vector2(0, 16)
+texture = ExtResource("2_odvh8")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_6pgta")

@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwrp1n3eylmvh"]
+
+[ext_resource type="Script" uid="uid://6ic61hsv7qv0" path="res://scripts/shroom.gd" id="1_82xwy"]
+[ext_resource type="Texture2D" uid="uid://cpmv5kph1jff0" path="res://icon/goost.png" id="2_82xwy"]
+[ext_resource type="Texture2D" uid="uid://bowpydd1ntuts" path="res://icon/Star_Yellow.png" id="3_uxs4s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_82xwy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_82xwy")
+}],
+"loop": true,
+"name": &"died",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_uxs4s")
+}],
+"loop": true,
+"name": &"small",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hd5x7"]
+size = Vector2(22, 18)
+
+[sub_resource type="GDScript" id="GDScript_25qh4"]
+script/source = "extends CollisionShape2D
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82xwy"]
+
+[node name="shroom" type="Area2D"]
+position = Vector2(0, -1)
+collision_layer = 32
+script = ExtResource("1_82xwy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 7.62939e-06)
+scale = Vector2(0.0429688, 0.0390625)
+texture = ExtResource("2_82xwy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+sprite_frames = SubResource("SpriteFrames_82xwy")
+animation = &"small"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hd5x7")
+script = SubResource("GDScript_25qh4")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("RectangleShape2D_82xwy")
+target_position = Vector2(0, 0)
+collision_mask = 18
+collide_with_areas = true

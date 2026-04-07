@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqdrt3l1olkjb"]
+
+[sub_resource type="GDScript" id="GDScript_ct4mp"]
+script/source = "extends Node
+
+var return_point: Vector2
+var player_mode: Player.PlayerMode
+var points: int
+var coin: int
+	
+"
+
+[node name="SceneData" type="Node"]
+script = SubResource("GDScript_ct4mp")

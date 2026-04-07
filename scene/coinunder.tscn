@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://djaaprbyyw8tt"]
+
+[ext_resource type="Script" uid="uid://c687xpomcrb10" path="res://scripts/coin_collected.gd" id="1_w4o4k"]
+[ext_resource type="Texture2D" uid="uid://dmjnafqtcrwxo" path="res://icon/Coins_Ui.png" id="1_y35jq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w4o4k"]
+radius = 5.0
+height = 10.0
+
+[node name="collectebaleCoin" type="Area2D"]
+script = ExtResource("1_w4o4k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(0.65625, 0.65625)
+texture = ExtResource("1_y35jq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_w4o4k")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

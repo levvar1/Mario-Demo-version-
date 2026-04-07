@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://buo427gr5edd0"]
+
+[ext_resource type="Script" uid="uid://1ysjnxps0ax" path="res://scripts/shotingflouwer.gd" id="1_oik52"]
+[ext_resource type="Texture2D" uid="uid://77flind0qpwi" path="res://icon/free-icon-plant-pot-8809749.png" id="2_oik52"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oik52"]
+size = Vector2(16, 22)
+
+[node name="shotingflouwer" type="Area2D"]
+collision_layer = 32
+script = ExtResource("1_oik52")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(5.96046e-08, 1)
+scale = Vector2(0.0322266, 0.0441284)
+texture = ExtResource("2_oik52")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_oik52")

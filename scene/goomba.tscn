@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4o4vsbdvr3dp"]
+
+[ext_resource type="Texture2D" uid="uid://53pambqsuqgw" path="res://icon/free-icon-ghost died-761280.png" id="1_fmlbe"]
+[ext_resource type="Script" uid="uid://dhgm0kwk1io5b" path="res://scripts/goomba.gd" id="1_txlxo"]
+[ext_resource type="Texture2D" uid="uid://cg3oc2rg8fib2" path="res://icon/free-icon-ghost-121202.png" id="2_txlxo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gvm42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fmlbe")
+}],
+"loop": true,
+"name": &"died",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_txlxo")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chc17"]
+size = Vector2(16, 16)
+
+[node name="goomba" type="Area2D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_txlxo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -0.249981)
+scale = Vector2(0.0351563, 0.0302735)
+sprite_frames = SubResource("SpriteFrames_gvm42")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_chc17")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 8)
+collision_mask = 18
